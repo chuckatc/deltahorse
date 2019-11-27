@@ -8155,6 +8155,11 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
+react-storage-hooks@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-storage-hooks/-/react-storage-hooks-3.0.1.tgz#82bdb4997af78bdef976d77c7192b72a961caefa"
+  integrity sha512-Jt5AeiRhzgG5DK97XILc6fsxGhSAdmkfhgNS2a3QyJCdLgSOMXtChvqPEHYcioUrOXE5Npj9xVnoGb2H6DZXDA==
+
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Header = () => {
-  const testAddUrl = `add/Start dust/${encodeURIComponent(
+  const testAddUrl = `add/Test/${encodeURIComponent(
     "https://www.justwatch.com/au/movie/stardust"
   )}/${encodeURIComponent(["Netflix", "Stan"].join("\t"))}`;
   return (

@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { navigate } from "@reach/router";
 
-const Add = ({ title, url, services }) => {
+const Add = ({ title, url, services, dispatch, writeError }) => {
+  // Use setTimeout(..., 0) to Work around race condition where state isn't
+  // updated when an add URL is launched from scratch
+  useEffect(() => {
+    const action = {
+      type: "UPDATE_TITLE",
+      payload: { ...{ title, url }, services: services.split("\t") }
+    };
+    setTimeout(() => {
+      dispatch(action);
+      navigate("/watchlist");
+    }, 0);
+  }, [title, url, services, dispatch]);
+
   return (
     <div>
-      {title}
-      {url}
-      <br />
-      <ul>
-        {services.split("\t").map((service, i) => (
-          <li key={i}>{service}</li>
-        ))}
-      </ul>
+      {writeError && (
+        <pre>Cannot write to localStorage: {writeError.message}</pre>
+      )}
     </div>
   );
 };
