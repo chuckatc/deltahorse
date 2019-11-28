@@ -1,23 +1,15 @@
 import React from "react";
 
-// Reference: https://exploringjs.com/impatient-js/ch_sets.html#missing-set-operations
-const arrayIntersection = (arrayA, arrayB) => {
-  const a = new Set(arrayA);
-  const b = new Set(arrayB);
-  const intersection = new Set([...a].filter(x => b.has(x)));
-  return Array.from(intersection);
-};
-
-const activeServices = services => services.filter(service => service.active);
-
-const serviceNames = services => services.map(service => service.name);
-
-const totalCostOfServices = services =>
-  services.reduce((total, service) => (total += service.monthlyCost), 0);
+import {
+  serviceNames,
+  activeServices,
+  formatCentsToDollars,
+  totalCostOfServices,
+  arrayIntersection
+} from "../utils";
 
 const Home = ({ state, dispatch }) => {
   const activeServiceNames = serviceNames(activeServices(state.services));
-  console.log(arrayIntersection(activeServiceNames, ["Netflix"]).length);
   return (
     <div>
       <h2>Services</h2>
@@ -35,12 +27,14 @@ const Home = ({ state, dispatch }) => {
                 })
               }
             />
-            {service.name} (${(service.monthlyCost / 100).toFixed(2)})
+            {service.name} (${formatCentsToDollars(service.monthlyCost)})
           </label>
         ))}
       </ul>
       <h2>Total Montly Cost</h2>$
-      {(totalCostOfServices(activeServices(state.services)) / 100).toFixed(2)}
+      {formatCentsToDollars(
+        totalCostOfServices(activeServices(state.services))
+      )}
       <h2>Watchlist Titles Available</h2>
       <ul>
         {state.watchlist.map((item, i) => {

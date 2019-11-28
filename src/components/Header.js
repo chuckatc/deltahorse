@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header>
       <h1>
-        <span role="img" aria-label="horse and unicorn emojis">
+        <span role="img" aria-label="horse and unicorn logo">
           🐴🦄
         </span>
       </h1>
